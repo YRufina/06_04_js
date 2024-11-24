@@ -12,9 +12,12 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
-      # TODO: укажите шаги по:
-      # 1. Установке зависимостей
-      # 2. Сборке проекта  
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 23.3.0
+      - run: npm install
+      - run: npm run build --if-present
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v1
         with:
